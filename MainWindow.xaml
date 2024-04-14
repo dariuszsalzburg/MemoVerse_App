@@ -1,0 +1,66 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Diary"
+    xmlns:OpenXml="clr-namespace:DocumentFormat.OpenXml;assembly=DocumentFormat.OpenXml.Framework" x:Class="Diary.MainWindow"
+    mc:Ignorable="d"
+    Height="827" Width="1444" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Section -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="1,5,7,5">
+            <TextBox x:Name="searchTextBox" Height="30" Width="187" Margin="2"  TextChanged="searchTextBox_TextChanged"/>
+            <ComboBox x:Name="t2" Height="30" Width="187"  SelectedValuePath="Content" LostFocus="t2_LostFocus" Margin="2">
+                <ComboBoxItem Content="Dziennik osobisty"/>
+                <ComboBoxItem Content="Cele i marzenia"/>
+                <ComboBoxItem Content="Refleksje i przemyślenia"/>
+                <ComboBoxItem Content="Podróże"/>
+                <ComboBoxItem Content="Zdrowie i kondycja fizyczna"/>
+                <ComboBoxItem Content="Kreatywność"/>
+                <ComboBoxItem Content="Edukacja i rozwój osobisty"/>
+                <ComboBoxItem Content="Praca i kariera"/>
+                <ComboBoxItem Content="Relacje międzyludzkie"/>
+                <ComboBoxItem Content="Przyszłość"/>
+                <ComboBoxItem Content="Inne"/>
+            </ComboBox>
+
+            <Button Content="Nowy" Click="Zapisz_Click" Width="90
+                    " Margin="2"/>
+            <Button Content="Usuń" Click="Usun_Click" Width="90" Margin="2"/>
+       
+            <Button Content="Edytuj" Click="Edytuj_Click" Width="90" Margin="2"/>
+            <Button Content="Dodaj do ulub." Click="DodajUlub_Click" Margin="2" Width="90" />
+            <Button x:Name="btn_Fav" Content="Ulubione" Click="btn_Fav_Click" Width="90" Margin="2" />
+            <Button x:Name="btn_All" Content="Wszystkie" Click="btn_All_Click" Width="90" Margin="2"/>
+            <Button x:Name="btn_export" Content="Ekport (Excel)" Click="ExportExcel_Click" Width="90" Margin="2"/>
+            <Button x:Name="btn_All_Kopiuj" Content="Eksport (CSV)" Click="ExportCSV_Click" Width="90" Margin="2"/>
+            <Button x:Name="btn_All_Kopiuj1" Content="Eksport (PDF)" Click="ExportPDF_Click" Width="90"  Margin="2"/>
+            <Button x:Name="btn_import" Content="Import (Excel)" Click="ImportExcel_Click" Width="90"  Margin="2"/>
+            <Button x:Name="btn_import_CSV" Click="ImportCSV_Click" Content="Import (CSV)" Width="90"  Margin="2"/>
+        </StackPanel>
+
+        <DataGrid x:Name="g1" Grid.Row="1" IsReadOnly="False" AutoGenerateColumns="False" MaxColumnWidth="1250" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data}" Width="Auto" CanUserResize="False"/>
+                <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="Auto" CanUserResize="False"/>
+                <DataGridTemplateColumn Header="Wpis" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Wpis}" TextWrapping="Wrap" MaxHeight="50" Width="Auto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

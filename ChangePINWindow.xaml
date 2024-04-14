@@ -1,0 +1,26 @@
+﻿<Window x:Class="Diary.ChangePINWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="176" Width="381"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Podaj nowy kod PIN:" Margin="10" Grid.Row="0" />
+        <PasswordBox x:Name="txt_NewPIN" Margin="10" Grid.Row="1" />
+        <Button Content="Zmień PIN" Margin="10,4,10,25" Grid.Row="2" Click="btn_Change_Click" RenderTransformOrigin="0.5,0.5" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.868"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.151"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+    </Grid>
+</Window>

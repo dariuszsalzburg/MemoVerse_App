@@ -1,0 +1,17 @@
+﻿<Window x:Class="Diary.PIN_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="176" Width="381" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Podaj PIN:" Margin="10" Grid.Row="0" />
+        <PasswordBox x:Name="txt_PIN" Margin="10,7,10,13" Grid.Row="1" />
+        <Button Content="Zaloguj" Margin="10,5,10,14" Grid.Row="2" Click="btn_Login_Click" />
+    </Grid>
+</Window>
+
