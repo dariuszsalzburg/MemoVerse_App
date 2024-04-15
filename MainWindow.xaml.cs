@@ -356,7 +356,39 @@ namespace Diary
                 MessageBox.Show("Wystąpił błąd podczas usuwania wpisów: " + ex.Message);
             }
         }
-
+        private void UsuńWpisULUB()
+        {
+            try
+            {
+                if (g1.SelectedItems.Count > 0)
+                {
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        con.Open();
+                        foreach (DataRowView rowView in g1.SelectedItems)
+                        {
+                            DataRow row = rowView.Row;
+                            string wpis = row["Wpis"].ToString();
+                            string data = row["Data"].ToString();
+                            SqlCommand cmd = new SqlCommand("DELETE FROM ulub_wpisy WHERE Wpis = @Wpis AND Data = @Data", con);
+                            cmd.Parameters.AddWithValue("@Wpis", wpis);
+                            cmd.Parameters.AddWithValue("@Data", data);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    MessageBox.Show("Wybrane wpisy zostały pomyślnie usunięte.");
+                    WypełnijDanymiUlub();
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz wpisy do usunięcia.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił błąd podczas usuwania wpisów: " + ex.Message);
+            }
+        }
 
 
         public void WypełnijDanymi()
@@ -673,6 +705,7 @@ namespace Diary
         private void Edytuj_Click(object sender, RoutedEventArgs e)
         {
             EdytujWpis();
+          
         }
 
         private void ExportExcel_Click(object sender, RoutedEventArgs e)
@@ -705,6 +738,12 @@ namespace Diary
         private void t2_LostFocus(object sender, RoutedEventArgs e)
         {
             Wyszukaj2();
+        }
+
+        private void usunulub(object sender, RoutedEventArgs e)
+        {
+            UsuńWpisULUB();
+            
         }
     }
 

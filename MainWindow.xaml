@@ -19,8 +19,8 @@
 
         <!-- Top Section -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="1,5,7,5">
-            <TextBox x:Name="searchTextBox" Height="30" Width="187" Margin="2"  TextChanged="searchTextBox_TextChanged"/>
-            <ComboBox x:Name="t2" Height="30" Width="187"  SelectedValuePath="Content" LostFocus="t2_LostFocus" Margin="2">
+            <TextBox x:Name="searchTextBox" Height="30" Width="159" Margin="2"  TextChanged="searchTextBox_TextChanged"/>
+            <ComboBox x:Name="t2" Height="30" Width="147"  SelectedValuePath="Content" LostFocus="t2_LostFocus" Margin="2">
                 <ComboBoxItem Content="Dziennik osobisty"/>
                 <ComboBoxItem Content="Cele i marzenia"/>
                 <ComboBoxItem Content="Refleksje i przemyślenia"/>
@@ -37,9 +37,10 @@
             <Button Content="Nowy" Click="Zapisz_Click" Width="90
                     " Margin="2"/>
             <Button Content="Usuń" Click="Usun_Click" Width="90" Margin="2"/>
-       
+
             <Button Content="Edytuj" Click="Edytuj_Click" Width="90" Margin="2"/>
             <Button Content="Dodaj do ulub." Click="DodajUlub_Click" Margin="2" Width="90" />
+            <Button Content="Usuń ulub." Click="usunulub" Width="90" Margin="2" />
             <Button x:Name="btn_Fav" Content="Ulubione" Click="btn_Fav_Click" Width="90" Margin="2" />
             <Button x:Name="btn_All" Content="Wszystkie" Click="btn_All_Click" Width="90" Margin="2"/>
             <Button x:Name="btn_export" Content="Ekport (Excel)" Click="ExportExcel_Click" Width="90" Margin="2"/>

@@ -50,15 +50,11 @@ namespace Diary
         private void OpenPUKWindow()
         {
             PUKWindow pukWindow = new PUKWindow();
-            if (pukWindow.ShowDialog() == true) // Sprawdzenie wartości DialogResult
+            if (pukWindow.ShowDialog() == true) 
             {
                 OpenChangePINWindow();
             }
-            else
-            {
-                MessageBox.Show("Nieprawidłowy PUK lub operacja anulowana. Aplikacja zostanie zamknięta.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                Application.Current.Shutdown();
-            }
+        
         }
 
 

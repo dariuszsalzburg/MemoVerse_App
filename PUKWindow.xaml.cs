@@ -7,6 +7,7 @@ namespace Diary
     public partial class PUKWindow : Window
     {
         private string connectionString = "Data Source=DESKTOP-F4HE8K3;Initial Catalog=Diary;Integrated Security=True";
+        private int incorrectAttempts = 0;
 
         public PUKWindow()
         {
@@ -28,10 +29,10 @@ namespace Diary
                 return pukCount > 0;
             }
         }
-      
+
         private void btn_Confirm_Click(object sender, RoutedEventArgs e)
         {
-             string puk = txt_PUK.Password;
+            string puk = txt_PUK.Password;
 
             if (string.IsNullOrEmpty(puk))
             {
@@ -45,7 +46,16 @@ namespace Diary
             }
             else
             {
-                MessageBox.Show("Nieprawidłowy PUK.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                incorrectAttempts++;
+                if (incorrectAttempts >= 3)
+                {
+                    MessageBox.Show("Przekroczono limit nieprawidłowych prób. Skontaktuj się z administratorem systemu.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Application.Current.Shutdown(); // Zamknięcie aplikacji
+                }
+                else
+                {
+                    MessageBox.Show("Nieprawidłowy PUK. Pozostało prób: " + (3 - incorrectAttempts), "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }
